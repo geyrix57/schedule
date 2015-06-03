@@ -4,9 +4,7 @@
     <persistence-unit name="schedule_db">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>est.una.schedule.model.Curso</class>
-        <class>est.una.schedule.model.Estudiante</class>
         <class>est.una.schedule.model.Horario</class>
-        <class>est.una.schedule.model.HorarioEscojido</class>
         <class>est.una.schedule.model.Grupo</class>
         <properties>
             <property name="javax.persistence.jdbc.url"

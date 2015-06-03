@@ -1,9 +1,10 @@
 package est.una.schedule.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
- * Created by geykel on 02/06/2015.
+ * Created by geykel on 03/06/2015.
  */
 @Entity
 @Table(name = "grupo", schema = "", catalog = "schedules")
@@ -17,7 +18,7 @@ public class Grupo {
     private int restante;
     private String instructor;
     private Curso cursoByCurso;
-    private Horario horarioByNrc;
+    private Collection<Horario> horariosByNrc;
 
     @Id
     @Column(name = "nrc")
@@ -93,12 +94,12 @@ public class Grupo {
         this.cursoByCurso = cursoByCurso;
     }
 
-    @OneToOne(mappedBy = "grupoByNrcGrupo")
-    public Horario getHorarioByNrc() {
-        return horarioByNrc;
+    @OneToMany(mappedBy = "grupoByNrcGrupo")
+    public Collection<Horario> getHorariosByNrc() {
+        return horariosByNrc;
     }
 
-    public void setHorarioByNrc(Horario horarioByNrc) {
-        this.horarioByNrc = horarioByNrc;
+    public void setHorariosByNrc(Collection<Horario> horariosByNrc) {
+        this.horariosByNrc = horariosByNrc;
     }
 }

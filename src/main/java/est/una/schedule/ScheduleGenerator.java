@@ -5,9 +5,7 @@ import est.una.schedule.model.Grupo;
 
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -72,11 +70,11 @@ public class ScheduleGenerator {
     public static void main(String[] args) {
         /*String[] set1 = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
         String[] set2 = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
-        String[] set3 = {"$", "%", "£", "!", "^", "#", "-", "*"};
+        String[] set3 = {"$", "%", "ï¿½", "!", "^", "#", "-", "*"};
         String[] set4 = {"k", "l"};
         String[] set5 = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
         String[] set6 = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
-        String[] set7 = {"$", "%", "£", "!", "^", "#", "-", "*"};
+        String[] set7 = {"$", "%", "ï¿½", "!", "^", "#", "-", "*"};
         String[] set8 = {"k", "l"};
         ScheduleGenerator sg = new ScheduleGenerator(set1, set2, set3, set4, set5, set6, set7, set8);
         System.out.println(sg.getAllPossibleSchedules().size());*/
