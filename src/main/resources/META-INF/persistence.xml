@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
+
+    <persistence-unit name="schedule_db">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>est.una.schedule.model.Curso</class>
+        <class>est.una.schedule.model.Estudiante</class>
+        <class>est.una.schedule.model.Horario</class>
+        <class>est.una.schedule.model.HorarioEscojido</class>
+        <class>est.una.schedule.model.Grupo</class>
+        <properties>
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:mysql://ec2-52-24-28-221.us-west-2.compute.amazonaws.com:3306/schedules"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="mswsschedules"/>
+            <property name="javax.persistence.jdbc.password" value="Peedwegcirb0"/>
+        </properties>
+    </persistence-unit>
+</persistence>
+
+        <!--
+        <property name="javax.persistence.jdbc.url"
+                              value="jdbc:mysql://ec2-52-24-28-221.us-west-2.compute.amazonaws.com:3306/schedules"/>
+                    <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+                    <property name="javax.persistence.jdbc.user" value="mswsschedules"/>
+                    <property name="javax.persistence.jdbc.password" value="Peedwegcirb0"/>
+        -->
