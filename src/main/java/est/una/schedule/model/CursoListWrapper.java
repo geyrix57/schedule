@@ -9,6 +9,9 @@ import java.util.List;
 public class CursoListWrapper {
     private List<String> cursos;
 
+    public CursoListWrapper() {
+    }
+
     public CursoListWrapper(boolean b) {
         cursos = new ArrayList<>();
     }
