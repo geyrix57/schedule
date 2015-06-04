@@ -34,9 +34,16 @@ public class ScheduleGenerator {
     }
 
     public ScheduleGenerator(String[]... Cursos) {
-        em = null;
-        nrc = Cursos;
+        em = ConnectionManager.getNewEntityManager();
+        nrc = new String[Cursos.length][];
         counters = new int[Cursos.length];
+        grupos = new ConcurrentHashMap<>();
+        for (int i = 0; i < Cursos.length; i++) {
+            nrc[i] = em.createNamedQuery("Curso.getGroups", Grupo.class).setParameter("curso", Cursos[i]).getResultList().stream().parallel().map(grupo -> {
+                grupos.putIfAbsent(grupo.getNrc(), grupo);
+                return grupo.getNrc();
+            }).toArray(String[]::new);
+        }
     }
 
     public List<List<String>> getAllPossibleSchedules() {
