@@ -11,7 +11,9 @@ import java.util.Collection;
 @Table(name = "grupo", schema = "", catalog = "schedules")
 @NamedQueries({
         @NamedQuery(name = "Curso.findNRC", query = "select grupo.nrc from Grupo grupo where grupo.cursoByCurso.codigo = :curso"),
-        @NamedQuery(name = "Curso.getGroups", query = "select grupo from Grupo grupo where grupo.cursoByCurso.codigo = :curso")
+        @NamedQuery(name = "Curso.getGroups", query = "select grupo from Grupo grupo where grupo.cursoByCurso.codigo = :curso"),
+        @NamedQuery(name = "Curso.byNRC", query = "select grupo from Grupo grupo where grupo.nrc = :nrc")
+
 })
 public class Grupo implements Serializable {
     private String nrc;

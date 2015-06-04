@@ -9,6 +9,9 @@ import java.util.Collection;
  */
 @Entity
 @Table(name = "curso", schema = "", catalog = "schedules")
+@NamedQueries({
+        @NamedQuery(name = "Curso.cursoid", query = "select curso.codigo from Curso curso")
+})
 public class Curso implements Serializable {
     private String codigo;
     private String titulo;
