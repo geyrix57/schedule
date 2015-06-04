@@ -1,6 +1,7 @@
 package est.una.schedule.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Collection;
  */
 @Entity
 @Table(name = "curso", schema = "", catalog = "schedules")
-public class Curso {
+public class Curso implements Serializable {
     private String codigo;
     private String titulo;
     private Collection<Grupo> gruposByCodigo;
@@ -53,7 +54,7 @@ public class Curso {
         return result;
     }
 
-    @OneToMany(mappedBy = "cursoByCurso")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cursoByCurso")
     public Collection<Grupo> getGruposByCodigo() {
         return gruposByCodigo;
     }

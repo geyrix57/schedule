@@ -6,6 +6,7 @@
         <class>est.una.schedule.model.Curso</class>
         <class>est.una.schedule.model.Horario</class>
         <class>est.una.schedule.model.Grupo</class>
+        <class>est.una.schedule.model.LocalTimeConverter</class>
         <properties>
             <property name="javax.persistence.jdbc.url"
                       value="jdbc:mysql://ec2-52-24-28-221.us-west-2.compute.amazonaws.com:3306/schedules"/>
@@ -14,12 +15,5 @@
             <property name="javax.persistence.jdbc.password" value="Peedwegcirb0"/>
         </properties>
     </persistence-unit>
+    
 </persistence>
-
-        <!--
-        <property name="javax.persistence.jdbc.url"
-                              value="jdbc:mysql://ec2-52-24-28-221.us-west-2.compute.amazonaws.com:3306/schedules"/>
-                    <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-                    <property name="javax.persistence.jdbc.user" value="mswsschedules"/>
-                    <property name="javax.persistence.jdbc.password" value="Peedwegcirb0"/>
-        -->

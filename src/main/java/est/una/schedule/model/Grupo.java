@@ -1,6 +1,7 @@
 package est.una.schedule.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Collection;
         @NamedQuery(name = "Curso.findNRC", query = "select grupo.nrc from Grupo grupo where grupo.cursoByCurso.codigo = :curso"),
         @NamedQuery(name = "Curso.getGroups", query = "select grupo from Grupo grupo where grupo.cursoByCurso.codigo = :curso")
 })
-public class Grupo {
+public class Grupo implements Serializable {
     private String nrc;
     private String campus;
     private int restante;
@@ -85,7 +86,7 @@ public class Grupo {
     }
 
     @ManyToOne
-    @JoinColumn(name = "curso", referencedColumnName = "codigo", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "curso", referencedColumnName = "codigo", nullable = false)
     public Curso getCursoByCurso() {
         return cursoByCurso;
     }
@@ -94,7 +95,7 @@ public class Grupo {
         this.cursoByCurso = cursoByCurso;
     }
 
-    @OneToMany(mappedBy = "grupoByNrcGrupo")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "grupoByNrcGrupo")
     public Collection<Horario> getHorariosByNrc() {
         return horariosByNrc;
     }
