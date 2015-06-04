@@ -4,6 +4,7 @@ import est.una.schedule.Controller.ConnectionManager;
 import est.una.schedule.model.Curso;
 import est.una.schedule.model.CursoListWrapper;
 import est.una.schedule.model.Grupo;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -37,9 +38,11 @@ public class SchedulesWSController {
     }
 
     @RequestMapping(value = "/grupo/{nrc}", method = RequestMethod.GET, produces = "application/json")
-    public Grupo grupobynrec(@PathVariable String nrc) {
+    public Grupo grupobynrec(@PathVariable String nrc, @RequestHeader HttpHeaders headers) {
         try {
             Grupo g = ConnectionManager.getNewEntityManager().createNamedQuery("Curso.byNRC", Grupo.class).setParameter("nrc", nrc).getSingleResult();
+            g.setCursoByCurso(null);
+            g.setHorariosByNrc(null);
             return g;
         } catch (Exception e) {
             e.printStackTrace();
@@ -47,8 +50,8 @@ public class SchedulesWSController {
         }
     }
 
-    @RequestMapping(value = "/cursos}", method = RequestMethod.GET, produces = "application/json")
-    public List<String> allCursoId() {
+    @RequestMapping("/clist")
+    public List<String> tst(@RequestHeader HttpHeaders headers) {
         try {
             List<String> g = ConnectionManager.getNewEntityManager().createNamedQuery("Curso.cursoid", String.class).getResultList();
             return g;
@@ -56,5 +59,10 @@ public class SchedulesWSController {
             e.printStackTrace();
             return new ArrayList<>();
         }
+    }
+
+    @RequestMapping("/")
+    public ModelAndView home() {
+        return new ModelAndView("redirect:" + "index.jsp");
     }
 }
